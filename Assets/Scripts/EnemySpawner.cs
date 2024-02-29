@@ -2,25 +2,28 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public Transform target; // The tower
-    public float spawnRadius = 5f;
+    public GameObject enemyPrefab; // Assign this in the inspector
+    public float spawnRate = 2f; // How often to spawn an enemy
+    private float nextSpawnTime = 0f;
 
-    private void Start()
+    void Update()
     {
-        SpawnEnemy();
+        if (Time.time >= nextSpawnTime)
+        {
+            SpawnEnemy();
+            nextSpawnTime = Time.time + 1f / spawnRate;
+        }
     }
 
     void SpawnEnemy()
     {
-        Vector3 spawnPosition = transform.position + Random.insideUnitSphere * spawnRadius;
-        spawnPosition.y = 0; // Ensure the enemy is on the ground
-
-        GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-        if (enemyAI != null)
+        if (enemyPrefab != null)
         {
-            enemyAI.SetTarget(target);
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Enemy Prefab is not assigned to the spawner.");
         }
     }
 }
