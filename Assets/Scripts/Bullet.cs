@@ -1,27 +1,85 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
-{
-    public float speed = 20f;
-    private Vector3 movementDirection;
+public class Bullet : MonoBehaviour {
 
-    void Start()
-    {
-        // Assume the bullet's forward direction is the direction to move towards
-        movementDirection = transform.forward;
-    }
+	private Transform target;
 
-    void Update()
-    {
-        if (Time.timeScale > 0) // Move only when time is not frozen
-        {
-            transform.position += movementDirection * speed * Time.deltaTime;
-        }
-    }
+	public float speed = 70f;
 
-    void OnCollisionEnter(Collision collision)
-    {
-        // Handle collision (e.g., damage enemy, destroy bullet)
-        Destroy(gameObject);
-    }
+	public int damage = 50;
+
+	public float explosionRadius = 0f;
+	public GameObject impactEffect;
+	
+	public void Seek (Transform _target)
+	{
+		target = _target;
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+		if (target == null)
+		{
+			Destroy(gameObject);
+			return;
+		}
+
+		Vector3 dir = target.position - transform.position;
+		float distanceThisFrame = speed * Time.deltaTime;
+
+		if (dir.magnitude <= distanceThisFrame)
+		{
+			HitTarget();
+			return;
+		}
+
+		transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+		transform.LookAt(target);
+
+	}
+
+	void HitTarget ()
+	{
+		GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+		Destroy(effectIns, 5f);
+
+		if (explosionRadius > 0f)
+		{
+			Explode();
+		} else
+		{
+			Damage(target);
+		}
+
+		Destroy(gameObject);
+	}
+
+	void Explode ()
+	{
+		Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+		foreach (Collider collider in colliders)
+		{
+			if (collider.tag == "Enemy")
+			{
+				Damage(collider.transform);
+			}
+		}
+	}
+
+	void Damage (Transform enemy)
+	{
+		Enemy e = enemy.GetComponent<Enemy>();
+
+		if (e != null)
+		{
+			e.TakeDamage(damage);
+		}
+	}
+
+	void OnDrawGizmosSelected ()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, explosionRadius);
+	}
 }
