@@ -154,7 +154,7 @@ RectTransform:
   m_GameObject: {fileID: 1266046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1726061954}
@@ -167,7 +167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 304, y: 171}
+  m_AnchoredPosition: {x: 698, y: 327}
   m_SizeDelta: {x: 0, y: 156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266048
@@ -681,7 +681,7 @@ PrefabInstance:
     - target: {fileID: 224000011561615966, guid: 63a6c71d72c052545ad6b59fa916856f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 394
+      value: 950
       objectReference: {fileID: 0}
     - target: {fileID: 224000011561615966, guid: 63a6c71d72c052545ad6b59fa916856f,
         type: 3}
@@ -1989,7 +1989,16 @@ MonoBehaviour:
     count: 2
     rate: 2
   - enemy: {fileID: 146912, guid: e9a85746bae401841b80a742cdb9a891, type: 3}
+    count: 3
+    rate: 2
+  - enemy: {fileID: 146912, guid: 019275f64b969fd4699297cf9d51c36a, type: 3}
+    count: 7
+    rate: 2
+  - enemy: {fileID: 146912, guid: e9a85746bae401841b80a742cdb9a891, type: 3}
     count: 2
+    rate: 2
+  - enemy: {fileID: 146912, guid: e9a85746bae401841b80a742cdb9a891, type: 3}
+    count: 5
     rate: 2
   spawnPoint: {fileID: 2093475345}
   timeBetweenWaves: 3
@@ -5222,7 +5231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -15.948, y: -15.803, z: 94.996}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -213, y: 3046}
+  m_AnchoredPosition: {x: 122, y: 2549}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &615850357
@@ -7711,7 +7720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 179.887}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 919, y: -874}
+  m_AnchoredPosition: {x: -695, y: -874}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913574244
@@ -11287,7 +11296,7 @@ PrefabInstance:
     - target: {fileID: 224000011561615966, guid: 63a6c71d72c052545ad6b59fa916856f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 415
+      value: 963
       objectReference: {fileID: 0}
     - target: {fileID: 224000011561615966, guid: 63a6c71d72c052545ad6b59fa916856f,
         type: 3}
@@ -11356,7 +11365,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a7abbaf50fb2f942911b4e58e374735, type: 2}
+  - {fileID: 2100000, guid: e821c94157d20dc429c0cb3f09a95db3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11589,7 +11598,7 @@ PrefabInstance:
     - target: {fileID: 224000011561615966, guid: 63a6c71d72c052545ad6b59fa916856f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 408
+      value: 957
       objectReference: {fileID: 0}
     - target: {fileID: 224000011561615966, guid: 63a6c71d72c052545ad6b59fa916856f,
         type: 3}
@@ -14539,7 +14548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
